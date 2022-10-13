@@ -1,0 +1,22 @@
+
+.pcontainer{
+	display: flex;
+	flex-direction: row;
+	margin: 3vmax;
+}
+
+.plcontainer{
+	border: rgb(23, 143, 63) 1px solid;
+	display:block;
+	margin: 2vmax auto;
+	width:50vw;
+	flex-wrap: wrap;
+	justify-content: center;
+	max-width: 100%;
+	box-sizing: border-box;
+}
+
+.ProductImage{
+	width:20vw;
+	height:50vh;
+}

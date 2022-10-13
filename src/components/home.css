@@ -1,0 +1,256 @@
+.Maincontainer{
+	display:flex;
+
+
+}
+
+.pagination{
+	display:flex;
+	margin: 2vmax auto;
+	width:80vw;
+	flex-wrap: wrap;
+	justify-content: center;
+	max-width: 100%;
+}
+
+.leftcontaine{
+	border: rgb(23, 143, 63) 1px solid;
+	display:flex;
+	margin: 2vmax auto;
+	width:20vw;
+	flex-wrap: wrap;
+	justify-content: center;
+	max-width: 100%;
+	box-sizing: border-box;
+	text-decoration: none;
+}
+
+
+.rightcontainer{
+	border: rgb(143, 23, 23) 1px solid;
+	display:flex;
+	margin: 2vmax auto;
+	width:80vw;
+	flex-wrap: wrap;
+	justify-content: center;
+	max-width: 100%;
+	text-decoration: none;
+}
+
+.productCart{
+	width:14vmax;
+	list-style: none;
+	text-decoration: none;
+	display:flex;
+	flex-direction:column;
+	color:rgb(48,48,48);
+	margin:2vmax;
+	transition: all 0.5vmax;
+	padding-bottom:0.5vmax;
+}
+
+.productCart>img{
+	max-width: 14vmax;
+	max-height: 20vmax;
+	text-decoration: none;
+}
+
+.productCart>p{
+	margin-top: .5rem;
+	font-size:.9rem;
+	white-space: nowrap;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	text-decoration: none;
+}
+
+.productCart > span{
+	margin:0.5vmax 0.5vmax;
+	color:tomato;
+	font-size: 1vmax;
+	text-decoration: none;
+}
+
+.productCart:hover {
+	box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
+	transform:translateY(-1vmax)
+}
+
+@media screen and (max-width: 600px) {
+	.productCart>p{
+		font-size:1.7vmax
+	}
+
+	.productCart > div{
+		margin:0vmax;
+		display:block;
+	}
+	.productCart > span{
+		font-size:1.5vmax
+	}
+	.productCart > div > span{
+		margin:0 0.5vmax;
+	}
+}
+
+.loader{
+	display:flex;
+	margin: 20vmax auto;
+	width:20vw;
+	flex-wrap: wrap;
+	justify-content: center;
+	max-width: 100%;
+	box-sizing: border-box;
+}
+
+.error{
+	display:block;
+	margin: 20vmax auto;
+	width:30vw;
+	flex-wrap: wrap;
+	justify-content: center;
+	max-width: 100%;
+	box-sizing: border-box;
+}
+
+
+.price{
+	width:5vw;
+	text-decoration: none;
+}
+
+.navbar{
+	position: sticky;
+	text-decoration: none;
+}
+
+.sideBarBrand{
+	color:tomato;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/* //Cart CSS start from here ------------------------------- */
+
+ .CartContainer{
+	position: relative;
+	width: 100%;
+	display: flex;
+	box-sizing: border-box;
+	text-align: center;
+	/* justify-content: center; */
+	align-items: center;
+	padding:1vw;
+	background-color: antiquewhite;
+	margin-top: 1vh; 
+	text-decoration: none;
+ }
+ .CartContainerC1{
+	max-width: 15vw;
+	box-sizing: border-box;
+	float:left;
+	margin-right:5vw;
+	text-decoration: none;
+ }
+ .CartContainerC1>div>img{
+	max-width: 100%;
+	text-decoration: none;
+	padding: absolute;
+	/* top:50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	transition: .8; */
+ }
+ .CartContainerC2{
+	text-decoration: none;
+	max-width: 60vw;
+	max-width: 50vh;
+	box-sizing: border-box;
+	float:left;
+ }
+
+/* user detail css */
+
+ .UserDetailContainer{
+	text-decoration: none;
+	position: relative;
+	margin:1vw auto;
+	width: 60vw;
+	display: flex;
+	box-sizing: border-box;
+	text-align: center;
+	/* justify-content: center; */
+	align-items: center;
+	padding:1vw;
+	background-color: rgb(240, 144, 20);
+	margin-top: 1vh;
+ }
+ .UserDetailContainerButton{
+	text-decoration: none;
+	background-color:rgb(132, 241, 141);
+	border-radius: 1vw;
+	padding:.5vw;
+	width:10vw;
+	margin-left: 5vw;
+	margin-top: 2vw;
+	box-sizing: border-box;
+ }
+ .UserDetailContainer>div>h3{
+	margin-top:3vw;
+	color:red;
+ }
+ .UserDetailContainer>div>h3>span{
+	color:black
+ }
+
+/* login related */
+
+.LoginContainer{
+	margin:1vw auto;
+	position: relative;
+	width: 20vw;
+	display: block;
+	box-sizing: border-box;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	padding:1vw;
+	background-color: rgb(240, 144, 20);
+	margin-top: 1vh;
+	border:1px solid black;
+}
+
+.LoginContainer> div>input{
+	border-radius: .3vw;
+	margin:3vh;
+    width: 80%;
+
+}
+.LoginContainerButton{
+	background-color:rgb(4, 117, 13);
+	border-radius: 1vw;
+	padding:.5vw;
+	width:10vw;
+	margin-top: 1vh;
+	/* text-decoration: none; */
+}
+
+
+
+
+/* cart related */
+
+.CartContainerDiv{
+	margin:1vw auto;
+	position: relative;
+	width: 60vw;
+	display: block;
+	box-sizing: border-box;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	padding:1vw;
+	background-color: rgb(240, 144, 20);
+	margin-top: 1vh;
+	border:1px solid black;
+}
