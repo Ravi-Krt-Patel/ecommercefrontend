@@ -5,9 +5,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import env from "react-dotenv";
 import { useSelector, useDispatch } from "react-redux";
-import {addProductDetail} from "../../redux/action/getDataAction";
+import {addProductDetail,addCartDetail,cartDataLoading} from "../../redux/action/getDataAction";
 import {Loader} from "../loading"
-
+import {Link} from "react-router-dom";
 
 export const ProductDetail = () => {
   const productDetail = useSelector(store=>store.ProductDetailReducer);
@@ -18,19 +18,87 @@ export const ProductDetail = () => {
     getProductDetail();
   }, []);
 
+  function addToCart() {
+    axios.get(`${env.BASE_URL}/addToCart`).then(({data})=>{
+      let check = false;
+      let qt = 0;
+			data.addtocart.forEach((el)=>{
+        if(el.item._id === id){
+          check = true;
+          qt = el.quantity;
+        }
+      })
+      if(check){
+        if (productDetail.stock > qt) {
+          axios
+            .post(`${env.BASE_URL}/addToCart`, {
+              itemId: id,
+            })
+            .then(({ data }) => {
+              console.log(data);
+              alert("item is added successfully");
+              //when item get added
+              axios
+                .get(`${env.BASE_URL}/addToCart`)
+                .then(({ data }) => {
+                  dispatch(addCartDetail(data));
+                  console.log(data);
+                  dispatch(cartDataLoading(true));
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        } else {
+          alert("limit exceeded for adding to cart");
+        }
+      }else{
+        axios
+            .post(`${env.BASE_URL}/addToCart`, {
+              itemId:id,
+            })
+            .then(({ data }) => {
+              alert("item added successfully");
+              //dispatch(cartDataLoading(false))
+              //for updating the results
+              axios
+                .get(`${env.BASE_URL}/addToCart`)
+                .then(({ data }) => {
+                  dispatch(addCartDetail(data));
+                  console.log(data);
+                  dispatch(cartDataLoading(true));
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+      }
+
+		})
+		.catch((err)=>{console.log(err);})
+ 
+  }
  
 
   function getProductDetail() {
     axios
       .get(`${env.BASE_URL}/product/${id}`)
       .then(({ data }) => {
-        console.log(data)
+        console.log(data,"this is product detail")
         dispatch(addProductDetail(data))
       })
       .catch((err) => {
         console.log(err);
       });
   }
+
+  const user = JSON.parse(localStorage.getItem("UserDetail"));
 
   return (
     <>{productDetail.status?(<div className="pcontainer">
@@ -112,14 +180,32 @@ export const ProductDetail = () => {
         <span>{productDetail.discount!==0?("  ("  +productDetail.discount+ "% off)"):("")}</span>{" "}
       </h3>
       <p>stock {productDetail.stock}</p>
-      <div>
-        <button type="button" class="btn btn-primary me-5 ">
-          Cart +
-        </button>
-        <button type="button" class="btn btn-warning ms-5">
+      {productDetail.stock !==0?(
+        <div>
+          <Link style={{ textDecoration: "none" }} to={user?("/productDetail"):("/login")} > 
+            <button type="button" class="btn btn-primary me-5 " onClick={addToCart} >
+             Cart +
+            </button>
+        </Link>
+        <Link style={{ textDecoration: "none" }}
+            to={user ? ("/allUserAddress") : ("/login")} >
+        <button type="button" class="btn btn-warning ms-5" >
           Buy Now
         </button>
+        </Link>
+        
+        
       </div>
+      ):(<div>
+        <button type="button" class="btn btn-primary me-5 " disabled >
+          Cart +
+        </button>
+       
+        <button type="button" class="btn btn-warning ms-5" disabled >
+          Buy Now
+        </button>
+      </div>)}
+      
     </div>
   </div>):(<Loader/>)}
       

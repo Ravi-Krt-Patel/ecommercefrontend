@@ -5,7 +5,8 @@ import {homePageReducer} from "./reducers/homePageReducer";
 import {UserDataReducer} from "./reducers/userDataReducer";
 import {CartDataReducer} from "./reducers/cartDataReducer";
 import {ProductDetailReducer} from "./reducers/productDetailReducer";
-import {AddressDataReducer} from "./reducers/addressDataReducer"
+import {AddressDataReducer} from "./reducers/addressDataReducer";
+import {OrderDataReducer} from "./reducers/orderDataReducer";
 import thunk from "redux-thunk";
 import {persistStore,persistReducer} from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -23,7 +24,8 @@ export const rootReducer = combineReducers({
 	UserDataReducer,
 	CartDataReducer,
 	ProductDetailReducer,
-	AddressDataReducer
+	AddressDataReducer,
+	OrderDataReducer
 });
 
 //const PersistReducer = persistReducer(persistConfig,rootReducer)

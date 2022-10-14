@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addUserAddress } from "../redux/action/getDataAction";
+import { addUserAddress,selectedAddress } from "../redux/action/getDataAction";
 import axios from "axios";
 import env from "react-dotenv";
 import "./home.css";
@@ -29,18 +29,24 @@ export const AllUsrAddress = () => {
       });
   }
 
+
+
+
+
   return (
     <>
       {address.AddressData.length !== 0 ? (
         <div>
-			{address.AddressData.map((el,key)=>(<div className="CartContainerDiv" >
+			{address.AddressData.map((el,key)=>(<Link to="/paymentMethod" style={{ textDecoration: "none" }} ><div className="CartContainerDiv" onClick={()=>{
+        dispatch(selectedAddress(el));
+      }} >
 				<p style={{margin:0,padding:0}} >address : {el.location}</p>
 				<p style={{margin:0,padding:0}} >contact : {el.contact}</p>
 				<p style={{margin:0,padding:0}} >pincode : {el.pincode}</p>
 				<p style={{margin:0,padding:0}} >city : {el.dist}</p>
 				<p style={{margin:0,padding:0}} >state : {el.state}</p>
 				<p style={{margin:0,padding:0}} >landmark : {el.landmark}</p>
-			</div>))}
+			</div></Link>))}
 		</div>
       ) : (
         <div className="CartContainerDiv">

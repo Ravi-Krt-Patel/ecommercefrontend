@@ -31,11 +31,13 @@ export const UserDetail = ()=>{
 		<h3><span>Role :</span>{user.role}</h3>
 		</div>
 		<div>
-			<button className="UserDetailContainerButton">Orders</button>
+			<Link to="/admin/UserOrderDetail">
+			   <button className="UserDetailContainerButton">Orders</button>
+			</Link>
+			
 			<Link to="/" >
 			<button className="UserDetailContainerButton" onClick={loggingOut} >logout</button>
 			</Link>
-			
 		</div>
 	</div>
 	</>)

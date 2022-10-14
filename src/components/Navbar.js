@@ -31,7 +31,7 @@ const CartData = useSelector(store=>store.CartDataReducer);
 
   
 
-
+  const user = JSON.parse(localStorage.getItem("UserDetail"));
 
   return (
     <>
@@ -40,6 +40,13 @@ const CartData = useSelector(store=>store.CartDataReducer);
           <Link to ="/">
                 Home
           </Link>
+          
+          {user!==null?(
+            <div>
+              {user.role==="admin"?(<Link to="/admin/AdminPanal" style={{textDecoration: "none" }} ><button type="button" class="btn btn-success ms-5">Admin</button></Link>):(<div></div>)}
+            </div>
+          ):(<div></div>)}
+          
           {/* <a className="navbar-brand">
             
           </a> */}
@@ -72,7 +79,8 @@ const CartData = useSelector(store=>store.CartDataReducer);
                 <span className="visually-hidden">unread messages</span>
               </span>
             </button>
-            </Link>
+            </Link>)
+            
             
             {localStorage.getItem("UserDetail") ? (
               <Link to="/userDetail" >

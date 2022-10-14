@@ -16,8 +16,13 @@ import {UserDetail} from "./components/UserDetails";
 import axios from "axios";
 import {UserLogin} from "./components/login_signup/Login"
 import {AllUsrAddress} from "./components/AllUserAddress";
-import {Route,Routes} from "react-router-dom"
-
+import {Route,Routes} from "react-router-dom";
+import {Payment} from "./components/payment";
+import {PaymentMethod} from "./components/paymentMethod";
+import {UserOrderDetail} from "./components/UserOrderDetail";
+import {ProductMake} from "./components/admin/ProductMake"
+import {AdminPanal} from "./components/admin/AdminPanal";
+import {ProductEdit} from "./components/admin/productEdit";
 function App() {
   return (<>
   <Navbar />
@@ -28,10 +33,15 @@ function App() {
     <Route path="/userDetail" element={<UserDetail/>}></Route>
     <Route path="/register" element={<Register/>} ></Route>
     <Route path="/cart" element={<AddCart/>} ></Route>
-    <Route path="/payment" element={<Home/>} ></Route>
+    <Route path="/payment" element={<Payment/>} ></Route>
+    <Route path="/paymentMethod" element={<PaymentMethod/>} ></Route>
     <Route path="/productDetail" element={<ProductDetail/>} ></Route>
     <Route path="/diliveryAddress" element={<DiliveryAddress/>} ></Route>
     <Route path="/allUserAddress" element={<AllUsrAddress/>} ></Route>
+    <Route path="/admin/AdminPanal" element={<AdminPanal/>} ></Route>
+    <Route path="/admin/AdminPanal/ProductMake" element={<ProductMake/>} ></Route>
+    <Route path="/admin/AdminPanal/ProductEdit/:id" element={<ProductEdit/>} ></Route>
+    <Route path="/admin/UserOrderDetail" element={<UserOrderDetail/>} ></Route>
   </Routes>
     </>
   );

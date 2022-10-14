@@ -253,4 +253,61 @@
 	background-color: rgb(240, 144, 20);
 	margin-top: 1vh;
 	border:1px solid black;
+	color:black;
+}
+
+
+
+
+
+/* payment css start from here */
+
+.PaymentContainerDiv{
+	margin:1vw auto;
+	position: relative;
+	width: 95vw;
+	display: flex;
+	box-sizing: border-box;
+	/* text-align: center;
+	justify-content: center;
+	align-items: center; */
+	padding:1vw;
+	background-color: rgb(240, 144, 20);
+	margin-top: 1vh;
+	border:1px solid black;
+	color:black;
+}
+.PaymentContainerDivLeft{
+	display:flex;
+	width:50vw;
+	border:1px solid black;
+	background-color:aliceblue;
+	margin:2vw;
+}
+.PaymentContainerDivLeftImg{
+	width:10vw;
+}
+.PaymentContainerDivrigth{
+	padding: 1vw;
+	width:30vw;
+	height: 30vw;
+	border:1px solid black;
+	background-color:aliceblue;
+	margin:2vw;
+}
+
+.PaymentContainerDivAdmin{
+	margin:1vw auto;
+	position: relative;
+	width: 95vw;
+	display: flex;
+	box-sizing: border-box;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	padding:1vw;
+	background-color: rgb(240, 144, 20);
+	margin-top: 1vh;
+	border:1px solid black;
+	color:black;
 }

@@ -3,7 +3,7 @@ window.env = {
   "ALLUSERSPROFILE": "C:\\ProgramData",
   "APPDATA": "C:\\Users\\MY PC\\AppData\\Roaming",
   "BASE_URL": "https://tranquil-scrubland-16626.herokuapp.com",
-  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_9404_HBLETRCTVHAIBWAR",
+  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_2744_URMBKPPFLSRJHEWS",
   "COLOR": "1",
   "COLORTERM": "truecolor",
   "COMMONPROGRAMFILES": "C:\\Program Files\\Common Files",

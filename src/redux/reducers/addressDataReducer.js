@@ -3,7 +3,8 @@
 const init = {
 	AddressData:[],
 	loading:false,
-  addingStatus:false
+  addingStatus:false,
+  selectedAddress:{}
 };
 
 export const AddressDataReducer = (store = init, { type, payload }) => {
@@ -12,6 +13,8 @@ export const AddressDataReducer = (store = init, { type, payload }) => {
       return {...store,AddressData:[...payload.shippingAddress],loading:true};
     case "NEW_ADDRESS_ADDED":
       return {...store, addingStatus:true}
+    case "SELECTED_ADDRESS":
+      return {...store,selectedAddress:payload}
     default:
       return store;
   }

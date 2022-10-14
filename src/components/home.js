@@ -68,8 +68,8 @@ const Home = () => {
                   product={{
                     name: e.ProductName,
                     image: e.image[0],
-                    Newprice: "₹ " + e.newPrice,
-                    Oldprice :"₹ " + e.oldPrice,
+                    Newprice:e.newPrice,
+                    Oldprice :e.oldPrice,
                     discount :e.discount,
                     rating:e.rating,
                     stock:e.stock,

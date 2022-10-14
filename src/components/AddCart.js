@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { addCartDetail, cartDataLoading } from "../redux/action/getDataAction";
+import { addCartDetail, cartDataLoading,addOrderItem} from "../redux/action/getDataAction";
 import { Cart } from "./cart";
 import env from "react-dotenv";
 import { useState, useEffect, memo } from "react";
@@ -15,7 +15,7 @@ const AddCart = () => {
   const UserDetail = useSelector((store) => store.UserDataReducer);
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("UserDetail"));
-  //console.log(CartData);
+  // console.log(CartData);
 
   useEffect(() => {
     if (user) {
@@ -28,8 +28,23 @@ const AddCart = () => {
       .get(`${env.BASE_URL}/addToCart`)
       .then(({ data }) => {
         dispatch(addCartDetail(data));
-        console.log(data);
+        //console.log(data);
         dispatch(cartDataLoading(true));
+        let orderData = [];
+        data.addtocart.forEach((el)=>{
+          el.item.quantity=el.quantity;
+          el.item.name = el.item.ProductName;
+          el.item.Newprice = el.item.newPrice;
+          el.item.image = el.item.image[0];
+          el.item.Id = el.item._id;
+          el.item.cartId = el._id;
+          if(el.item.stock !==0 && el.quantity <= el.item.stock){
+            orderData.push(el.item);
+          }
+        })
+
+        //this is for making order
+        dispatch(addOrderItem(orderData));
       })
       .catch((err) => {
         console.log(err);
@@ -51,12 +66,13 @@ const AddCart = () => {
                     <Cart
                       cart={{
                         name: e.item.ProductName,
-                        image: e.item.image[0],
+                        image: e.item.image,
                         rating: e.item.rating,
                         id: e.item._id,
                         stock: e.item.stock,
                         OrderQuntity: e.quantity,
                         cartId: e._id,
+                        price:e.item.newPrice
                       }}
                     />
                   ))}

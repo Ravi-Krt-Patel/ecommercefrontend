@@ -102,25 +102,29 @@ export const Cart = ({ cart }) => {
           <div>
             <img src={cart.image} />
           </div>
+          {cart.stock !== 0?(<div>
           <button
             type="button"
-            class="btn btn-light"
+            class="btn btn-warning"
             onClick={() => {
               removeFromCart(cart.cartId);
             }}
-          >
+            >
             -
-          </button>
-          <span>{cart.OrderQuntity}</span>
-          <button
+            </button>
+            <span style={{margin:"1vw",fontWeight:"bold"}} >{cart.OrderQuntity}</span>
+            <button
             type="button"
-            class="btn btn-light"
+            class="btn btn-warning"
             onClick={() => {
               addtocart(cart.id, cart.stock, cart.OrderQuntity);
             }}
-          >
+            >
             +
-          </button>
+            </button>
+          </div>):(<div>Out of Stock</div>)}
+          
+            
         </div>
         <div className="CartContainerC2">
           <h4>{cart.name}</h4>
@@ -134,10 +138,11 @@ export const Cart = ({ cart }) => {
               isHalf: true,
             }}
           />
-          <p>price - 342</p>
+          <p>price - {cart.price}</p>
+          {/* <p>stock : {cart.stock}</p> */}
           <button
             type="button"
-            class="btn btn-light"
+            class="btn btn-warning"
             onClick={() => {
               deleteFromCart(cart.cartId);
             }}

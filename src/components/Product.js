@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./home.css";
 import ReactStars from "react-rating-stars-component";
 import { useSelector, useDispatch } from "react-redux";
-import { cartDataLoading, addCartDetail } from "../redux/action/getDataAction";
+import { cartDataLoading, addCartDetail,addOrderItem } from "../redux/action/getDataAction";
 import { useState } from "react";
 import env from "react-dotenv";
 import axios from "axios";
@@ -95,23 +95,26 @@ export const Product = ({ product }) => {
 
   return (
     <div>
-      <Link to={`/product/${product.Id}`} style={{ textDecoration: "none" }}>
+      {/* <Link to={`/product/${product.Id}`} style={{ textDecoration: "none" }}> */}
+      <Link style={{ textDecoration: "none" }} to={user!==null?(user.role==="admin"?(`/admin/AdminPanal/ProductEdit/${product.Id}`):(`/product/${product.Id}`)):(`/product/${product.Id}`)} >
         <div className="productCart">
           <img src={product.image} alt={product.name} />
           <p>{product.name}</p>
-          <div>
+          <div style={{margin:"0",padding:"0"}} >
             <ReactStars {...opFun(product.rating)} />
-            <span>(256 Reviews)</span>
+            <span style={{margin:"0",padding:"0"}} >(256 Reviews)</span>
           </div>
-          <span>
-            {product.Newprice}
+          <span style={{margin:"0",padding:"0"}} > 
+            {"₹ "+ product.Newprice}
             {product.discount !== 0 ? "  (" + product.discount + "%off)" : ""}
           </span>
-          <span>
-            <s>{product.discount !== 0 ? product.Oldprice : ""}</s>
+          <span style={{margin:"0",padding:"0"}} >
+            <s>{product.discount !== 0 ?"₹ " + product.Oldprice : ""}</s>
           </span>
-          <span>Stock : {product.stock}</span>
-          <Link style={{ textDecoration: "none" }} to={user ? "/" : "/login"}>
+          <span style={{margin:"0",padding:"0"}} >Stock : {product.stock}</span>
+          {product.stock !==0?(
+            <div>
+              <Link style={{ textDecoration: "none" }} to={user ? "/" : "/login"}>
             <button
               onClick={() => {
                 if (user) {
@@ -131,8 +134,14 @@ export const Product = ({ product }) => {
           <Link
             style={{ textDecoration: "none" }}
             to={user ? "/allUserAddress" : "/login"}
+            
           >
             <button
+            onClick={()=>{
+              product.quantity=1;
+              //console.log(product,"we are checking")
+              dispatch(addOrderItem([product]));
+            }}
               type="button"
               className={
                 product.stock < 1
@@ -143,6 +152,40 @@ export const Product = ({ product }) => {
               Order Now
             </button>
           </Link>
+            </div>
+          ):(
+            <div>
+             
+            <button
+             disabled
+              
+              type="button"
+              className={
+                product.stock < 1
+                  ? "btn btn-primary btn-sm disabled"
+                  : "btn btn-primary btn-sm"
+              }
+            >
+              Add to Cart
+            </button>
+        
+          
+            <button
+            disabled
+            
+              type="button"
+              className={
+                product.stock < 1
+                  ? "btn btn-warning btn-sm disabled"
+                  : "btn btn-warning btn-sm"
+              }
+            >
+              Order Now
+            </button>
+        
+            </div>
+          )}
+          
         </div>
       </Link>
     </div>

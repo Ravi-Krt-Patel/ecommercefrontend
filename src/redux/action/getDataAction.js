@@ -108,6 +108,10 @@ export const addProductDetail = (payload)=>({
 	payload
 })
 
+export const removeProductDetail = ()=>({
+	type:"REMOVE_PRODUCT_DETAIL"
+})
+
 
 //user address detail-------------
 export const addUserAddress = (payload)=>({
@@ -117,6 +121,19 @@ export const addUserAddress = (payload)=>({
 
 export const newAddressAdded=()=>({
 	type:"NEW_ADDRESS_ADDED"
+})
+
+export const selectedAddress =(payload)=>({
+	type:"SELECTED_ADDRESS",
+	payload
+})
+
+
+
+// user order details
+export const addOrderItem=(payload)=>({
+	type:"ADD_ORDER_ITEM",
+	payload
 })
 
 // export const setHomeData =()=>{
