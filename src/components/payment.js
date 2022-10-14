@@ -11,29 +11,41 @@ export const Payment = () => {
   const dispatch = useDispatch();
   const address = useSelector((store) => store.AddressDataReducer);
   const order = useSelector((store) => store.OrderDataReducer);
+
+
+
+  // console.log(order,"this is for making order only");
+  console.log(address,"this is for making address only");
+
   const [orderPrice, setOrderPrice] = useState({
     totalPrice: 0,
     shippingPrice: 0,
   });
-  const [totalAmt, setTotalAmt] = useState(0);
+ 
   
   //console.log(order);
 
   useEffect(() => {
+    Amount();
+  }, []);
+
+  console.log("total price");
+
+
+  function Amount(){
     let total = 0;
     order.OrderData.forEach((el) => {
       total += Number(el.Newprice) * Number(el.quantity);
+      
     });
-    //console.log(total)
     if (total < 1000) {
       setOrderPrice({ ...orderPrice, shippingPrice: 80, totalPrice: total });
     } else {
       setOrderPrice({ ...orderPrice, totalPrice: total, shippingPrice: 0 });
     }
-    setTotalAmt(orderPrice.totalPrice);
-  }, []);
-
-
+   
+   
+  }
 
 
 
@@ -48,7 +60,7 @@ export const Payment = () => {
           .get(`${env.BASE_URL}/addToCart`)
           .then(({ data }) => {
             dispatch(addCartDetail(data));
-            console.log(data);
+            //console.log(data);
             dispatch(cartDataLoading(true));
           })
           .catch((err) => {
@@ -60,8 +72,6 @@ export const Payment = () => {
       });
   }
 
-
-
   // console.log(orderPrice);
 
   function placeOrder() {
@@ -72,8 +82,8 @@ export const Payment = () => {
       obj.quantity = el.quantity;
       orderedItems.push(obj);
     });
-    let buyerAdress = address.selectedAddress;
-    let orderAmount = totalAmt;
+    let buyerAdress = address.selectedAddress.shippingAddress._id;
+    let orderAmount =order.totalAmt() ;
     let paymentMethod = "Cash on dilivery";
     let paymentStatus = "unpaid";
 
@@ -86,7 +96,7 @@ export const Payment = () => {
         paymentStatus: paymentStatus,
       })
       .then(({ data }) => {
-		//console.log(data)
+		console.log(data)
         alert("order is placed successfully");
 		order.OrderData.forEach((el)=>{
 			deleteFromCart(el.cartId);

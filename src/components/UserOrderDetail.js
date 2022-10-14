@@ -4,16 +4,24 @@ import env from "react-dotenv";
 import axios from "axios";
 
 export const UserOrderDetail = ()=>{
+
+	const [order,setOrder] = useState([]);
+
+
 	useEffect(()=>{
 		axios.get(`${env.BASE_URL}/orderProduct/user/orders`).then(({data})=>{
 			console.log(data)
+			setOrder(data.order)
+			console.log(order,"diff")
 		})
 		.catch((err)=>{console.log(err);})
 	},[])
 
 	return (<>
 	<div>
-		working superb
+		working........
+		
+		
 	</div>
 	</>)
 }

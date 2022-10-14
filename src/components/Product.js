@@ -106,7 +106,7 @@ export const Product = ({ product }) => {
           </div>
           <span style={{margin:"0",padding:"0"}} > 
             {"₹ "+ product.Newprice}
-            {product.discount !== 0 ? "  (" + product.discount + "%off)" : ""}
+            {product.discount !== 0 ? "  (" + product.discount + "%off )" : ""}
           </span>
           <span style={{margin:"0",padding:"0"}} >
             <s>{product.discount !== 0 ?"₹ " + product.Oldprice : ""}</s>

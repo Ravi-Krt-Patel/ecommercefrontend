@@ -23,6 +23,7 @@ import {UserOrderDetail} from "./components/UserOrderDetail";
 import {ProductMake} from "./components/admin/ProductMake"
 import {AdminPanal} from "./components/admin/AdminPanal";
 import {ProductEdit} from "./components/admin/productEdit";
+
 function App() {
   return (<>
   <Navbar />
@@ -34,7 +35,8 @@ function App() {
     <Route path="/register" element={<Register/>} ></Route>
     <Route path="/cart" element={<AddCart/>} ></Route>
     <Route path="/payment" element={<Payment/>} ></Route>
-    <Route path="/paymentMethod" element={<PaymentMethod/>} ></Route>
+   
+    <Route path="/paymentMethod/:addressId" element={<PaymentMethod/>} ></Route>
     <Route path="/productDetail" element={<ProductDetail/>} ></Route>
     <Route path="/diliveryAddress" element={<DiliveryAddress/>} ></Route>
     <Route path="/allUserAddress" element={<AllUsrAddress/>} ></Route>
