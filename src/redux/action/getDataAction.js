@@ -63,6 +63,20 @@ export const removeRating = (payload)=>({
 	payload
 })
 
+export const addCategory =(payload)=>({
+	type:"ADD_CATEGORY",
+	payload
+})
+
+export const addSearchCategory =(payload)=>({
+	type:"ADD_SEARCH_CATEGORY",
+	payload
+})
+
+export const removeCategory =()=>({
+	type:"ADD_CATEGORY"
+})
+
 
 
 //user data action start from here ----------------
@@ -112,6 +126,15 @@ export const removeProductDetail = ()=>({
 	type:"REMOVE_PRODUCT_DETAIL"
 })
 
+export const addRatingProductDetail = (payload)=>({
+	type:"ADD_RATING_PRODUCT_DETAIL",
+	payload
+})
+
+export const addAllReviews = (payload)=>({
+	type:"ADD_ALL_REVIEWS",
+	payload
+})
 
 //user address detail-------------
 export const addUserAddress = (payload)=>({
@@ -133,6 +156,11 @@ export const selectedAddress =(payload)=>({
 // user order details
 export const addOrderItem=(payload)=>({
 	type:"ADD_ORDER_ITEM",
+	payload
+})
+
+export const addOrderedItems = (payload)=>({
+	type:"ADD_ORDERED_ITEMS",
 	payload
 })
 

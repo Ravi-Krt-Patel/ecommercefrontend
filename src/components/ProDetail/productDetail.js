@@ -5,18 +5,21 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import env from "react-dotenv";
 import { useSelector, useDispatch } from "react-redux";
-import {addProductDetail,addCartDetail,cartDataLoading} from "../../redux/action/getDataAction";
+import {addProductDetail,addCartDetail,cartDataLoading,addAllReviews} from "../../redux/action/getDataAction";
 import {Loader} from "../loading"
 import {Link} from "react-router-dom";
+import BasicRating from "../rating";
 
 export const ProductDetail = () => {
   const productDetail = useSelector(store=>store.ProductDetailReducer);
   const dispatch = useDispatch();
   const { id } = useParams();
-
+  const [review, setReview] = useState("");
+  //console.log(productDetail,"product detail")
   useEffect(() => {
     getProductDetail();
-  }, []);
+    getAllReviews();
+  }, [productDetail.userRating,productDetail.rating]);
 
   function addToCart() {
     axios.get(`${env.BASE_URL}/addToCart`).then(({data})=>{
@@ -35,14 +38,14 @@ export const ProductDetail = () => {
               itemId: id,
             })
             .then(({ data }) => {
-              console.log(data);
+              //console.log(data);
               alert("item is added successfully");
               //when item get added
               axios
                 .get(`${env.BASE_URL}/addToCart`)
                 .then(({ data }) => {
                   dispatch(addCartDetail(data));
-                  console.log(data);
+                 // console.log(data);
                   dispatch(cartDataLoading(true));
                 })
                 .catch((err) => {
@@ -68,7 +71,7 @@ export const ProductDetail = () => {
                 .get(`${env.BASE_URL}/addToCart`)
                 .then(({ data }) => {
                   dispatch(addCartDetail(data));
-                  console.log(data);
+                  //console.log(data);
                   dispatch(cartDataLoading(true));
                 })
                 .catch((err) => {
@@ -86,11 +89,12 @@ export const ProductDetail = () => {
   }
  
 
+
   function getProductDetail() {
     axios
       .get(`${env.BASE_URL}/product/${id}`)
       .then(({ data }) => {
-        console.log(data,"this is product detail")
+      //  console.log(data,"this is product detail")
         dispatch(addProductDetail(data))
       })
       .catch((err) => {
@@ -98,67 +102,66 @@ export const ProductDetail = () => {
       });
   }
 
+
+  function getAllReviews (){
+    axios
+      .get(`${env.BASE_URL}/reviews/${id}`)
+      .then(({ data }) => {
+        console.log(data,"this is for product revies")
+        dispatch(addAllReviews(data))
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+
+
   const user = JSON.parse(localStorage.getItem("UserDetail"));
 
   return (
     <>{productDetail.status?(<div className="pcontainer">
-    <div className="plcontaine">
-      <div
-        id="carouselExampleControlsNoTouching"
-        class="carousel slide"
-        data-bs-touch="false"
-        data-bs-interval="false"
-      >
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img
-              src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/TVs/Jup22/Kamya/MiRedmi/R01_PC_CategoryCard_758X608._SY304_CB608210661_.jpg"
-              class="ProductImage"
-              alt="..."
-            />
-          </div>
-          <div class="carousel-item">
-            <img
-              src="https://m.media-amazon.com/images/I/41mDAtPMDKL._AC_SY200_.jpg"
-              class="ProductImage"
-              alt="..."
-            />
-          </div>
-          <div class="carousel-item IMdiv">
-            <img
-              src="https://m.media-amazon.com/images/I/410iWt8d79L._AC_SY200_.jpg"
-              class="ProductImage"
-              alt="..."
-            />
-          </div>
-        </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleControlsNoTouching"
-          data-bs-slide="prev"
-        >
-          <span
-            class="carousel-control-prev-icon"
-            aria-hidden="true"
-          ></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleControlsNoTouching"
-          data-bs-slide="next"
-        >
-          <span
-            class="carousel-control-next-icon"
-            aria-hidden="true"
-          ></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+
+<div id="carouselExampleDark" className="carousel carousel-dark slide" data-bs-ride="carousel">
+  <div className="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div className="carousel-inner">
+    <div className="carousel-item active" data-bs-interval="10000">
+     
+         <img src={productDetail.image[0]} style={{width:"20vw"}}  alt="..."/>
+         {/* className="d-block w-40" */}
+      
+      <div className="carousel-caption d-none d-md-block">
+        
       </div>
     </div>
-    {/* detail of product is start from here ----------------*/}
+    <div className="carousel-item" data-bs-interval="2000">
+      <img src={productDetail.image[1]} style={{width:"20vw"}}  alt="..."/>
+      <div className="carousel-caption d-none d-md-block">
+        
+      </div>
+    </div>
+    <div className="carousel-item">
+      <img src={productDetail.image[2]} style={{width:"20vw"}} alt="..."/>
+      <div className="carousel-caption d-none d-md-block">
+        
+      </div>
+    </div>
+  </div>
+  <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span className="visually-hidden">Previous</span>
+  </button>
+  <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+    <span className="visually-hidden">Next</span>
+  </button>
+</div>
+
+
     <div className="plcontainer">
       <h2>{productDetail.name}</h2>
       <div>
@@ -183,13 +186,13 @@ export const ProductDetail = () => {
       {productDetail.stock !==0?(
         <div>
           <Link style={{ textDecoration: "none" }} to={user?("/productDetail"):("/login")} > 
-            <button type="button" class="btn btn-primary me-5 " onClick={addToCart} >
+            <button type="button" className="btn btn-primary me-5 " onClick={addToCart} >
              Cart +
             </button>
         </Link>
         <Link style={{ textDecoration: "none" }}
             to={user ? ("/allUserAddress") : ("/login")} >
-        <button type="button" class="btn btn-warning ms-5" >
+        <button type="button" className="btn btn-warning ms-5" >
           Buy Now
         </button>
         </Link>
@@ -197,18 +200,71 @@ export const ProductDetail = () => {
         
       </div>
       ):(<div>
-        <button type="button" class="btn btn-primary me-5 " disabled >
+        <button type="button" className="btn btn-primary me-5 " disabled >
           Cart +
         </button>
        
-        <button type="button" class="btn btn-warning ms-5" disabled >
+        <button type="button" className="btn btn-warning ms-5" disabled >
           Buy Now
         </button>
       </div>)}
       
     </div>
+   
   </div>):(<Loader/>)}
+  <div className="reviewContainer">
+  
+      <div className="reviewContainerleft" >
       
+      {productDetail.allReviews.map((el)=>(<>
+        <div className="reviewContainerleftOne" >
+        <ReactStars
+          {...{
+            edit: false,
+            color: "rgba(20,20,20,0.1",
+            activeColor: "tomato",
+            size: window.innerWidth < 600 ? 20 : 25,
+            value: el.rating,
+            isHalf: true,
+          }}
+        />
+        <p style={{margin:0,padding:0}} >message : {el.comment}</p>
+        <p style={{margin:0,padding:0}} >name : {el.creater.name}</p>
+        <p style={{margin:0,padding:0}} >email : {el.creater.email}</p>
+        </div>
+      </>))}
+     
+      
+      
+        
+      </div>
+      <div className="reviewContainerright" >
+        <BasicRating/>
+        <textarea style={{width:"25vw",height:"10vw"}} onChange={(e)=>{
+          setReview(e.target.value);
+        }} ></textarea>
+        making review.........
+        <Link style={{ textDecoration: "none" }} to={user ? "/productDetail" : "/login"}>
+        <button type="button" class="btn btn-primary" onClick={()=>{
+          if(productDetail.userRating === 0){
+            alert("please give rating to product")
+          }else if(review.trim().length ===0){
+            alert("please add some words about product")
+          }else{
+            axios.patch(`${env.BASE_URL}/product/${id}`,{
+              comment:review,
+              rating:productDetail.userRating
+            })
+            .then(({data})=>{
+              alert("review created")
+             // console.log(data)
+            })
+            .catch((err)=>{console.log(err)})
+          }
+          
+        }} >Review</button></Link>
+      </div>
+    </div>
     </>
   );
 };

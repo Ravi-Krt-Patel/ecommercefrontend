@@ -3,7 +3,7 @@ window.env = {
   "ALLUSERSPROFILE": "C:\\ProgramData",
   "APPDATA": "C:\\Users\\MY PC\\AppData\\Roaming",
   "BASE_URL": "https://tranquil-scrubland-16626.herokuapp.com",
-  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_2744_URMBKPPFLSRJHEWS",
+  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_1376_JXFCIJPKTSJEAJME",
   "COLOR": "1",
   "COLORTERM": "truecolor",
   "COMMONPROGRAMFILES": "C:\\Program Files\\Common Files",
@@ -90,7 +90,7 @@ window.env = {
   "TEMP": "C:\\Users\\MYPC~1\\AppData\\Local\\Temp",
   "TERM": "xterm-256color",
   "TERM_PROGRAM": "vscode",
-  "TERM_PROGRAM_VERSION": "1.72.1",
+  "TERM_PROGRAM_VERSION": "1.72.2",
   "TMP": "C:\\Users\\MYPC~1\\AppData\\Local\\Temp",
   "TMPDIR": "C:\\Users\\MYPC~1\\AppData\\Local\\Temp",
   "USERDOMAIN": "DESKTOP-FJO1LF1",
@@ -102,5 +102,6 @@ window.env = {
   "VSCODE_GIT_ASKPASS_NODE": "C:\\Users\\MY PC\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
   "VSCODE_GIT_IPC_HANDLE": "\\\\.\\pipe\\vscode-git-0740e106a9-sock",
   "WINDIR": "C:\\Windows",
-  "_": "C:/Program Files/nodejs/node.exe"
+  "_": "C:/Program Files/nodejs/node.exe",
+  "__COMPAT_LAYER": "DetectorsAppHealth"
 };

@@ -11,7 +11,10 @@ const init = {
 	description:"",
 	brand:"",
 	category:"",
-  status:false
+	image:[],
+	userRating:"",
+    status:false,
+	allReviews:[]
 };
 
 export const ProductDetailReducer = (store = init, { type, payload }) => {
@@ -29,6 +32,7 @@ export const ProductDetailReducer = (store = init, { type, payload }) => {
 	  brand:payload.product.brand,
 	  category:payload.product.category,
 	  similarProduct:[...payload.Similerproduct],
+	  image:[...payload.product.image],
 	  status:true};
 	case "REMOVE_PRODUCT_DETAIL":
 		return {...store,name:"",
@@ -44,6 +48,10 @@ export const ProductDetailReducer = (store = init, { type, payload }) => {
 			category:"",
 			similarProduct:[],
 			status:true}
+	case "ADD_RATING_PRODUCT_DETAIL":
+		return {...store,userRating:payload}
+	case "ADD_ALL_REVIEWS":
+		return {...store,allReviews:[...payload.review]}
     default:
       return store;
   }

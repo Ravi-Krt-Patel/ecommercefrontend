@@ -24,6 +24,7 @@ import {ProductMake} from "./components/admin/ProductMake"
 import {AdminPanal} from "./components/admin/AdminPanal";
 import {ProductEdit} from "./components/admin/productEdit";
 
+
 function App() {
   return (<>
   <Navbar />

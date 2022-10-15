@@ -17,9 +17,14 @@ const init = {
 	maxPrice:0,
 	smaxPrice:0,
 	findName:"",
+	category:[],
+	scategory:"",
 	Url:function(){
 		let fUrl = `${env.BASE_URL}/product/search?`;
-		fUrl = fUrl+"page=" + this.pageNo + "&";
+		if(this.pageNo !==1){
+			fUrl = fUrl+"page=" + this.pageNo + "&";
+		}
+		
 		if(this.sbrand.length !==0){
 			for(let i=0; i<this.sbrand.length; i++){
 				// fUrl = `${fUrl}b${i}=${this.brand[i]}&`
@@ -39,6 +44,9 @@ const init = {
 		}
 		if(this.sldiscount !==0 && this.shdiscount !==0){
 			fUrl = fUrl + "d1="+this.sldiscount+"&"+"d2="+this.shdiscount + "&"
+		}
+		if(this.scategory.length !==0){
+			fUrl = fUrl + "category="+this.scategory + "&";
 		}
 		return fUrl;
 	}
@@ -71,6 +79,10 @@ export const homePageReducer = (store=init, {type,payload})=>{
 			return {...store,srating:[...store.srating,payload]}
 		case "REMOVE_RATING":
 			return {...store,srating:store.srating.filter((el)=>el !== payload)}
+		case "ADD_CATEGORY":
+			return {...store,category:payload}
+		case "ADD_SEARCH_CATEGORY":
+			return {...store,scategory:payload}
 		default:
 			return store;
 	}

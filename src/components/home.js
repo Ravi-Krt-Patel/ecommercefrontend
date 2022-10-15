@@ -9,6 +9,7 @@ import BasicRating from "./rating";
 import { Loader } from "./loading";
 import env from "react-dotenv";
 import axios from "axios";
+import {Category} from "./category";
 import {
   getHomeDataLoading,
   getHomeData,
@@ -32,15 +33,14 @@ const Home = () => {
       getData();
     
    
-  }, [page, alldata.findName, alldata.sbrand,alldata.sminPrice,alldata.smaxPrice,alldata.shdiscount,alldata.shrating,alldata.srating]);
+  }, [page, alldata.findName, alldata.sbrand,alldata.sminPrice,alldata.smaxPrice,alldata.shdiscount,alldata.shrating,alldata.srating,alldata.scategory,alldata.rating]);
   
    async function getData() {
     dispatch(getHomeDataLoading());
-    
     dispatch(pageUpdate(page));
     dispatch(getHomeDataLoading());
     await axios.get(alldata.Url()).then(({ data }) => {
-      // console.log(data , "it is from here")
+       console.log(data , "it is from here")
       dispatch(getHomeData(data));
 
       //this is for updating cart
@@ -59,7 +59,9 @@ const Home = () => {
     <>
       {alldata.loading ? (
         <div>
+          <Category/>
           <div className="Maincontainer">
+          
             <Sidebar />
 
             <div className="rightcontainer">
@@ -73,7 +75,8 @@ const Home = () => {
                     discount :e.discount,
                     rating:e.rating,
                     stock:e.stock,
-                    Id:e._id
+                    Id:e._id,
+                    reveiws:e.numOfReviews
                   }}
                 />
               ))}

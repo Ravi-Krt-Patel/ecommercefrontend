@@ -14,7 +14,7 @@ export const Payment = () => {
 
 
 
-  // console.log(order,"this is for making order only");
+   console.log(order,"this is for making order only");
   console.log(address,"this is for making address only");
 
   const [orderPrice, setOrderPrice] = useState({
@@ -23,7 +23,7 @@ export const Payment = () => {
   });
  
   
-  //console.log(order);
+  // console.log(order);
 
   useEffect(() => {
     Amount();
@@ -80,10 +80,11 @@ export const Payment = () => {
       let obj = {};
       obj.product = el.Id;
       obj.quantity = el.quantity;
+      obj.orderAmount = Number(el.Newprice)*Number(el.quantity);
       orderedItems.push(obj);
     });
     let buyerAdress = address.selectedAddress.shippingAddress._id;
-    let orderAmount =order.totalAmt() ;
+   // let orderAmount =order.totalAmt() ;
     let paymentMethod = "Cash on dilivery";
     let paymentStatus = "unpaid";
 
@@ -91,7 +92,6 @@ export const Payment = () => {
       .post(`${env.BASE_URL}/orderProduct/product/orders`, {
         orderedItems: orderedItems,
         buyerAdress: buyerAdress,
-        orderAmount: orderAmount,
         paymentMethod: paymentMethod,
         paymentStatus: paymentStatus,
       })
