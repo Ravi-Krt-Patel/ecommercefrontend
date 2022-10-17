@@ -83,6 +83,17 @@ export const homePageReducer = (store=init, {type,payload})=>{
 			return {...store,category:payload}
 		case "ADD_SEARCH_CATEGORY":
 			return {...store,scategory:payload}
+		case "REMOVE_SEARCH_CATEGORY":
+			return {...store,scategory:""}
+		case "ALL_SEARCH_DATA_CLEAR":
+			return {...store,sbrand:[],
+				srating:[],
+				sldiscount:0,
+				shdiscount:0,
+				sminPrice:0,
+				smaxPrice:0,
+				findName:"",
+				scategory:"",}
 		default:
 			return store;
 	}

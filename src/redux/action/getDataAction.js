@@ -73,10 +73,13 @@ export const addSearchCategory =(payload)=>({
 	payload
 })
 
-export const removeCategory =()=>({
-	type:"ADD_CATEGORY"
+export const removeSearchCategory =()=>({
+	type:"REMOVE_SEARCH_CATEGORY"
 })
 
+export const allClearSearchData =()=>({
+	type:"ALL_SEARCH_DATA_CLEAR"
+})
 
 
 //user data action start from here ----------------

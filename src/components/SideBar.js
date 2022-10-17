@@ -118,7 +118,7 @@ export const Sidebar = () => {
                 >
                   <div className="form-check">
                     <label
-                      className={"form-check-label"}
+                      className={"form-check-label brand-hover"}
                       onClick={() => {
                         if (!alldata.sbrand.includes(el)) {
                           dispatch(addBrand(el));
@@ -160,7 +160,7 @@ export const Sidebar = () => {
                   }
                 }}
               >
-              {alldata.srating.includes(1)?(<span>&#9734; &#9734; &#9734; &#9734; &#9733;</span>):(<span> &#9734; &#9734; &#9734; &#9734; &#9734;</span>)}
+              1 {alldata.srating.includes(1)?(<span>&#9734; &#9734; &#9734; &#9734; &#9733;</span>):(<span> &#9734; &#9734; &#9734; &#9734; &#9734;</span>)}
               </label>
             </div>
           </div>
@@ -179,7 +179,7 @@ export const Sidebar = () => {
                   }
                 }}
               >
-                 {alldata.srating.includes(2)?(<span>&#9734; &#9734; &#9734; &#9733; &#9733;</span>):(<span> &#9734; &#9734; &#9734; &#9734; &#9734;  </span>)}
+                2 {alldata.srating.includes(2)?(<span>&#9734; &#9734; &#9734; &#9733; &#9733;</span>):(<span> &#9734; &#9734; &#9734; &#9734; &#9734;  </span>)}
               </label>
             </div>
           </div>
@@ -198,7 +198,7 @@ export const Sidebar = () => {
                   }
                 }}
               >
-             {alldata.srating.includes(3)?(<span>&#9734; &#9734; &#9733; &#9733; &#9733;</span>):(<span> &#9734; &#9734; &#9734; &#9734; &#9734;  </span>)}
+            3 {alldata.srating.includes(3)?(<span>&#9734; &#9734; &#9733; &#9733; &#9733;</span>):(<span> &#9734; &#9734; &#9734; &#9734; &#9734;  </span>)}
               </label>
             </div>
           </div>
@@ -217,7 +217,7 @@ export const Sidebar = () => {
                   }
                 }}
               >
-                {alldata.srating.includes(4)?(<span>&#9734; &#9733; &#9733; &#9733; &#9733;</span>):(<span> &#9734; &#9734; &#9734; &#9734; &#9734;  </span>)}
+               4 {alldata.srating.includes(4)?(<span>&#9734; &#9733; &#9733; &#9733; &#9733;</span>):(<span> &#9734; &#9734; &#9734; &#9734; &#9734;  </span>)}
               </label>
             </div>
           </div>
@@ -236,7 +236,7 @@ export const Sidebar = () => {
                   }
                 }}
               >
-                {alldata.srating.includes(5)?(<span>&#9733; &#9733; &#9733; &#9733; &#9733;</span>):(<span> &#9734; &#9734; &#9734; &#9734; &#9734;  </span>)}
+               5 {alldata.srating.includes(5)?(<span>&#9733; &#9733; &#9733; &#9733; &#9733;</span>):(<span> &#9734; &#9734; &#9734; &#9734; &#9734;  </span>)}
               </label>
             </div>
           </div>

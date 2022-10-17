@@ -130,6 +130,11 @@
 	text-decoration: none;
 }
 
+.brand-hover:hover{
+	color:tomato;
+	font-weight: bold;
+}
+
 /* //Cart CSS start from here ------------------------------- */
 
  .CartContainer{

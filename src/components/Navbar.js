@@ -5,7 +5,7 @@ import { addSearchText } from "../redux/action/getDataAction";
 import { useState,useEffect } from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
-import {addCartDetail,cartDataLoading} from "../redux/action/getDataAction"
+import {addCartDetail,cartDataLoading,allClearSearchData} from "../redux/action/getDataAction"
 import {UserDetail} from "./UserDetails";
 
 
@@ -21,8 +21,9 @@ const CartData = useSelector(store=>store.CartDataReducer);
   
   const submitChange = (e) => {
     e.preventDefault();
+    dispatch(allClearSearchData())
     dispatch(addSearchText(text));
-    console.log(text);
+    //console.log(text);
   };
 
   useEffect(()=>{
@@ -37,7 +38,9 @@ const CartData = useSelector(store=>store.CartDataReducer);
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
         <div className="container-fluid">
-          <Link to ="/">
+          <Link to ="/" onClick={()=>{
+            dispatch(allClearSearchData())
+          }} >
                 Home
           </Link>
           
