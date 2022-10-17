@@ -39,7 +39,8 @@ const CartData = useSelector(store=>store.CartDataReducer);
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
         <div className="container-fluid">
           <Link to ="/" onClick={()=>{
-            dispatch(allClearSearchData())
+            setText("");
+            dispatch(allClearSearchData());
           }} >
                 Home
           </Link>
