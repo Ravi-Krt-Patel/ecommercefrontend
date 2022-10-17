@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import env from "react-dotenv";
 import axios from "axios";
 import {addCartDetail,cartDataLoading} from "../redux/action/getDataAction";
-
+import {Link} from "react-router-dom";
 
 
 export const Payment = () => {
@@ -148,9 +148,11 @@ export const Payment = () => {
           </h5>
           {/* <h2>Total Amnount : {orderPrice.grossPrice}</h2> */}
           <div class="d-grid gap-2 mt-5">
+            <Link to="/" style={{ textDecoration: "none" }}>
             <button class="btn btn-success" type="button" onClick={placeOrder} >
               Place Order
             </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -250,7 +250,7 @@ export const ProductDetail = () => {
             alert("please give rating to product")
           }else if(review.trim().length ===0){
             alert("please add some words about product")
-          }else{
+          }else if(user){
             axios.patch(`${env.BASE_URL}/product/${id}`,{
               comment:review,
               rating:productDetail.userRating
