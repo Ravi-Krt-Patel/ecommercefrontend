@@ -215,7 +215,7 @@ export const ProductDetail = () => {
   <div className="reviewContainer">
   
       <div className="reviewContainerleft" >
-      
+      {productDetail.allReviews.length === 0?(<h2>there is no reviews on this project</h2>):(<div></div>)}
       {productDetail.allReviews.map((el)=>(<>
         <div className="reviewContainerleftOne" >
         <ReactStars
@@ -233,10 +233,6 @@ export const ProductDetail = () => {
         <p style={{margin:0,padding:0}} >email : {el.creater.email}</p>
         </div>
       </>))}
-     
-      
-      
-        
       </div>
       <div className="reviewContainerright" >
         <BasicRating/>

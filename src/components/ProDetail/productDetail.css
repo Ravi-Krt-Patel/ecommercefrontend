@@ -34,7 +34,7 @@
 
 .reviewContainerleft{
 	width:50vw;
-	border:1px solid black;
+	/* border:1px solid black; */
 	margin: 2vw;
 	padding:2vw;
 
@@ -45,7 +45,7 @@
 	margin: 2vw;
 	width:30vw;
 	height:30vw;
-	border:1px solid rgb(201, 7, 7);
+	/* border:1px solid rgb(201, 7, 7); */
 	
 }
 
