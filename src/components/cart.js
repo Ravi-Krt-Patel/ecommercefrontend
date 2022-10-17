@@ -94,6 +94,7 @@ export const Cart = ({ cart }) => {
         console.log(err);
       });
   }
+  
 
   return (
     <>
