@@ -61,7 +61,7 @@ const AddCart = () => {
             <div>
               {CartData.CartData.length !== 0 ? (
                 <div>
-                  <Link to="/allUserAddress" style={{ textDecoration: "none" }} ><button className="CartContainerDiv">Proced to Buy</button></Link>
+                  <Link to="/allUserAddress" style={{ textDecoration: "none" }} ><button className="CartContainerDiv">Proceed to Buy</button></Link>
                   {CartData.CartData.map((e) => (
                     <Cart
                       cart={{
