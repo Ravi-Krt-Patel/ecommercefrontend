@@ -186,7 +186,9 @@ export const ProductDetail = () => {
       {productDetail.stock !==0?(
         <div>
           <Link style={{ textDecoration: "none" }} to={user?("/productDetail"):("/login")} > 
-            <button type="button" className="btn btn-primary me-5 " onClick={addToCart} >
+            <button type="button" className="btn btn-primary me-5 " onClick={()=>{
+              if(user){addToCart()}
+            }} >
              Cart +
             </button>
         </Link>
