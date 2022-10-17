@@ -29,6 +29,11 @@ export const UserOrderDetail = ()=>{
 		axios.delete(`${env.BASE_URL}/orderProduct/user/orders/${id}`).then(({data})=>{
 			//console.log(data,"order of user....")
 			alert("this Order is cancelled successfully");
+			axios.get(`${env.BASE_URL}/orderProduct/user/orders`).then(({data})=>{
+				//console.log(data,"order of user....")
+				dispatch(addOrderedItems(data.order))
+			})
+			.catch((err)=>{console.log(err);})
 		})
 		.catch((err)=>{console.log(err);})
 	}

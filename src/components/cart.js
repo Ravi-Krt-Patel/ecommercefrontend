@@ -76,7 +76,7 @@ export const Cart = ({ cart }) => {
     axios
       .delete(`${env.BASE_URL}/addToCart/${cartId}`)
       .then(({ data }) => {
-        console.log(data);
+       // console.log(data);
         alert("item is deleted from cart");
         //when item get deleted
         axios
