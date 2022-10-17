@@ -102,7 +102,7 @@ export const Product = ({ product }) => {
           <p>{product.name}</p>
           <div style={{margin:"0",padding:"0"}} >
             <ReactStars {...opFun(product.rating)} />
-            <span style={{margin:"0",padding:"0"}} >({product.reveiws})</span>
+            <span style={{margin:"0",padding:"0"}} >Reviews({product.reveiws})</span>
           </div>
           <span style={{margin:"0",padding:"0"}} > 
             {"₹ "+ product.Newprice}
