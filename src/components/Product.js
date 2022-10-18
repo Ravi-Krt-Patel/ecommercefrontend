@@ -98,7 +98,10 @@ export const Product = ({ product }) => {
       {/* <Link to={`/product/${product.Id}`} style={{ textDecoration: "none" }}> */}
       <Link style={{ textDecoration: "none" }} to={user!==null?(user.role==="admin"?(`/admin/AdminPanal/ProductEdit/${product.Id}`):(`/product/${product.Id}`)):(`/product/${product.Id}`)} >
         <div className="productCart">
+          <div className="productCartImg" >
           <img src={product.image} alt={product.name} />
+          </div>
+          
           <p>{product.name}</p>
           <div style={{margin:"0",padding:"0"}} >
             <ReactStars {...opFun(product.rating)} />

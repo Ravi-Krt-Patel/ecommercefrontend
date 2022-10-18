@@ -46,15 +46,25 @@
 	color:rgb(48,48,48);
 	margin:2vmax;
 	transition: all 0.5vmax;
-	padding-bottom:0.5vmax;
+	padding:1vmax;
 }
 
-.productCart>img{
+/* .productCart>img{
 	max-width: 14vmax;
 	max-height: 20vmax;
 	text-decoration: none;
+} */
+.productCartImg{
+	max-width: 14vmax;
+	max-height: 20vmax;
+	padding:.5vw;
+	text-decoration: none;
 }
-
+.productCartImg>img{
+	width: 100%;
+	height: 20vmax;
+	object-fit: contain;
+}
 .productCart>p{
 	margin-top: .5rem;
 	font-size:.9rem;

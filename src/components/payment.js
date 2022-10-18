@@ -133,12 +133,12 @@ export const Payment = () => {
         <div className="PaymentContainerDivrigth">
           <h4>Address</h4>
           <p>
-            contact : {address.selectedAddress.contact}, city:{" "}
-            {address.selectedAddress.dist}, landmark:{" "}
-            {address.selectedAddress.landmark}, location:{" "}
-            {address.selectedAddress.location},pincode:{" "}
-            {address.selectedAddress.pincode}, state:{" "}
-            {address.selectedAddress.pincode}
+            contact : {address.selectedAddress.shippingAddress.contact}, city:{" "}
+            {address.selectedAddress.shippingAddress.dist}, landmark:{" "}
+            {address.selectedAddress.shippingAddress.landmark}, location:{" "}
+            {address.selectedAddress.shippingAddress.location},pincode:{" "}
+            {address.selectedAddress.shippingAddress.pincode}, state:{" "}
+            {address.selectedAddress.shippingAddress.pincode}
           </p>
 
           <h5>Products Amnount : ₹ {orderPrice.totalPrice}</h5>
