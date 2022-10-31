@@ -179,7 +179,7 @@ export const ProductDetail = () => {
       </div>
       <h3>
         <span>Price ₹ {productDetail.Nprice}</span>{" "}
-        <s> {productDetail.discount!==0?("₹"+productDetail.Oprice):("")}</s>
+        <s> {productDetail.discount!==0?("$"+productDetail.Oprice):("")}</s>
         <span>{productDetail.discount!==0?("  ("  +productDetail.discount+ "% off)"):("")}</span>{" "}
       </h3>
       <p>stock {productDetail.stock}</p>

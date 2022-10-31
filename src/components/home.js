@@ -29,9 +29,7 @@ const Home = () => {
   // console.log(Data)
   console.log(alldata)
   useEffect(() => {
-    
       getData();
-    
    
   }, [page, alldata.findName, alldata.sbrand,alldata.sminPrice,alldata.smaxPrice,alldata.shdiscount,alldata.shrating,alldata.srating,alldata.scategory,alldata.rating]);
   

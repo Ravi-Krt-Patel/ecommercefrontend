@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addSearchText } from "../redux/action/getDataAction";
 import { useState,useEffect } from "react";
 import axios from "axios";
+import env from "react-dotenv";
 import {Link} from "react-router-dom";
 import {addCartDetail,cartDataLoading,allClearSearchData} from "../redux/action/getDataAction"
 import {UserDetail} from "./UserDetails";
@@ -18,10 +19,10 @@ const CartData = useSelector(store=>store.CartDataReducer);
 
   const dispatch = useDispatch();
   const [text, setText] = useState("");
-  
+  const [search, setSearch] = useState([]);
   const submitChange = (e) => {
     e.preventDefault();
-    dispatch(allClearSearchData())
+    dispatch(allClearSearchData());
     dispatch(addSearchText(text));
     //console.log(text);
   };
@@ -30,6 +31,17 @@ const CartData = useSelector(store=>store.CartDataReducer);
 
   },[Userdata,CartData.CartData])
 
+
+  const handleChange = (e)=>{
+    setText(e.target.value);
+    const {value} = e.target;
+    axios.get(`${env.BASE_URL}/product/search?name=${value}`)
+    .then(({data})=>{
+      setSearch(data.ProductData);
+      console.log(data,"this is from search");
+    })
+    .catch(err=>{console.log(err)})
+  }
   
 
   const user = JSON.parse(localStorage.getItem("UserDetail"));
@@ -64,10 +76,9 @@ const CartData = useSelector(store=>store.CartDataReducer);
                 value={text}
                 placeholder="Search"
                 aria-label="Search"
-                onChange={(e) => {
-                  setText(e.target.value);
-                }}
+                onChange={handleChange}
               />
+              
               <button className="btn btn-outline-success me-5" type="submit">
                 Search
               </button>
@@ -103,6 +114,12 @@ const CartData = useSelector(store=>store.CartDataReducer);
           </div>
         </div>
       </nav>
+      {/* {search.length>0?(<>
+      {search.map((el,i)=>(<div >
+        <span></span>
+      </div>))}
+
+      </>):(<div>dfs</div>)} */}
 
       {/* //bottom nav bar----------------------------------- */}
     </>
