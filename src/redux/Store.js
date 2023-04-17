@@ -16,7 +16,6 @@ const persistConfig = {
 	storage
 }
 
-
 export const rootReducer = combineReducers({
 	CounterReducer,
 	getDataReducer,
